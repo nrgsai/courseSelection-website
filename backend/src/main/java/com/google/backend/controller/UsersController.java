@@ -15,13 +15,20 @@ public class UsersController {
 
     private final UsersService service;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = CollageConstant.CREATE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> create(@RequestBody UsersModel model) {
         return ResponseEntity.ok(service.create(model));
     }
 
-    @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = CollageConstant.DELETE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> delete(@PathVariable Long id) {
         return ResponseEntity.ok(service.delete(id));
+    }
+
+    @PostMapping(value = CollageConstant.LIST_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> list(@RequestBody UsersModel model,
+                                  @RequestParam("limit") Integer limit,
+                                  @RequestParam("offset") Integer offset) {
+        return ResponseEntity.ok(service.getListUser(model, limit, offset));
     }
 }

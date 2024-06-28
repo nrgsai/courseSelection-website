@@ -5,6 +5,9 @@ public class CollageConstant {
     //API_ADDRESS
     public static final String USER_CONTEXT = "/api/users";
     public static final String JWT_CONTEXT = "/jwt";
+    public static final String CREATE_CONTEXT = "/create";
+    public static final String DELETE_CONTEXT = "/delete/{id}";
+    public static final String LIST_CONTEXT = "/list";
     //END_API_ADDRESS
 
     //MESSAGE

@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -111,5 +112,14 @@ public class UsersService implements UserDetailsService {
             throw new ServiceException(CollageConstant.INVALID_TOKEN);
         repository.deleteById(id);
         return map;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public List<?> getListUser(UsersModel model, Integer limit, Integer offset) {
+        return repository.getList(
+                model.getUsername() != null ? model.getUsername() : "",
+                limit != null ? limit : 5,
+                offset != null ? offset - 1 : 0
+        );
     }
 }
