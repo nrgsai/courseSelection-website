@@ -17,11 +17,7 @@ public class UsersController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> create(@RequestBody UsersModel model) {
-        if (service.findUsersByUsername(model.getUsername()).isEmpty())
-            return ResponseEntity.ok(service.create(model));
-        else
-            return ResponseEntity.internalServerError()
-                    .body(CollageConstant.USERNAME_CONFLICT);
+        return ResponseEntity.ok(service.create(model));
     }
 
     @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)

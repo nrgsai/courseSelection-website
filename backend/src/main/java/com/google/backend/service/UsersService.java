@@ -62,9 +62,11 @@ public class UsersService implements UserDetailsService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public UsersModel create(UsersModel usersModel) {
-        encryptedPassword(usersModel);
-        Users users = UsersMapper.get().modelToEntity(usersModel);
+    public UsersModel create(UsersModel model) {
+        if (this.findUsersByUsername(model.getUsername()).isPresent())
+            throw new ServiceException(CollageConstant.USERNAME_CONFLICT);
+        encryptedPassword(model);
+        Users users = UsersMapper.get().modelToEntity(model);
         checkAndSetDefaultBoolean(users);
         repository.save(users);
         UsersModel createdModel = UsersMapper.get().entityToModel(users);
