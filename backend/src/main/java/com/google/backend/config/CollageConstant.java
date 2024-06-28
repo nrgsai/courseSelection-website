@@ -9,6 +9,7 @@ public class CollageConstant {
 
     //MESSAGE
     public static final String SUCCESS = "SUCCESS";
+    public static final String STATUS = "STATUS";
     public static final String USERNAME_CONFLICT = "The username has already been registered ";
     public static final String USER_INVALID = "Incorrect username/password supplied";
     public static final String INVALID_TOKEN = "Invalid Token";

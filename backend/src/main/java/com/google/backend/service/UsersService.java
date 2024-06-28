@@ -12,12 +12,14 @@ import com.google.backend.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -50,7 +52,7 @@ public class UsersService implements UserDetailsService {
         Optional<Users> findUser = repository.findUsersByUsername(username);
         if (findUser.isEmpty())
             throw new UsernameNotFoundException(CollageConstant.USER_INVALID);
-        return org.springframework.security.core.userdetails.User
+        return User
                 .withUsername(username)
                 .password(findUser.get().getPassword())
                 .roles(rolesService.getUserRoleNameByUserIdWithoutRole(findUser.get().getId()))
@@ -96,7 +98,8 @@ public class UsersService implements UserDetailsService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public String delete(Long id) {
+    public Map<String, String> delete(Long id) {
+        Map<String, String> map = Map.of(CollageConstant.STATUS, CollageConstant.SUCCESS);
         if (id.compareTo(CollageConstant.ONE_LONG) == 0)
             throw new ServiceException(ResourceBundle.getMessageByKey("CannotBeDeletedAdminUsers"));
         String token = SecurityUtil.getTokenFromCurrentRequest();
@@ -106,8 +109,7 @@ public class UsersService implements UserDetailsService {
                 throw new ServiceException(ResourceBundle.getMessageByKey("CannotBeDeleteCurrentUser"));
         } else
             throw new ServiceException(CollageConstant.INVALID_TOKEN);
-        userRoleService.deleteUserRoleListByUserId(id);
         repository.deleteById(id);
-        return CollageConstant.SUCCESS;
+        return map;
     }
 }
