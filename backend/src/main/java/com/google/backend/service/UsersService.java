@@ -114,7 +114,7 @@ public class UsersService implements UserDetailsService {
         return map;
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(readOnly = true)
     public List<?> getListUser(UsersModel model, Integer limit, Integer offset) {
         return repository.getList(
                 model.getUsername() != null ? model.getUsername() : "",
