@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "unit")
 public class Unit {
 
-    //todo : must be check with nrgs
-
     @Id
     @GeneratedValue
     @Column(name = "id")

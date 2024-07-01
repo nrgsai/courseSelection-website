@@ -102,4 +102,116 @@
         </insert>
     </changeSet>
 
+    <changeSet id="1.1-6-mohammad" author="mohammad">
+        <createTable tableName="expertise">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_expertise_id"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1-7-mohammad" author="mohammad">
+        <createTable tableName="lesson">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_lesson_id"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_number" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expertise_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_lesson_expertise_expertise_id"
+                             referencedColumnNames="id"
+                             referencedTableName="expertise"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1-8-mohammad" author="mohammad">
+        <createTable tableName="professor">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_professor_id"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="national_code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expertise_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_professor_expertise_expertise_id"
+                             referencedColumnNames="id"
+                             referencedTableName="expertise"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1-9-mohammad" author="mohammad">
+        <createTable tableName="unit">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_unit_id"/>
+            </column>
+            <column name="lesson_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_unit_lesson_lesson_id"
+                             referencedColumnNames="id"
+                             referencedTableName="lesson"/>
+            </column>
+            <column name="professor_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_unit_professor_professor_id"
+                             referencedColumnNames="id"
+                             referencedTableName="professor"/>
+            </column>
+            <column name="day" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1-10-mohammad" author="mohammad">
+        <createTable tableName="student_unit">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_student_unit_id"/>
+            </column>
+            <column name="users_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_student_unit_users_users_id"
+                             referencedColumnNames="id"
+                             referencedTableName="users"/>
+            </column>
+            <column name="unit_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_student_unit_unit_unit_id"
+                             referencedColumnNames="id"
+                             referencedTableName="unit"/>
+            </column>
+            <column name="day" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

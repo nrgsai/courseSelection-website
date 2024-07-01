@@ -7,8 +7,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
 @Mapper(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL
         , componentModel = "spring"
 )
@@ -21,6 +19,4 @@ public interface UserRoleMapper {
     @Mapping(target = "users", ignore = true)
     @Mapping(target = "roles", ignore = true)
     UserRoleEntity modelToEntity(UserRoleModel model);
-
-    List<UserRoleModel> entitiesToModels(List<UserRoleEntity> entities);
 }

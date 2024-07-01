@@ -7,40 +7,37 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
 @Setter
 @ToString
-@Table(name = "lesson")
-public class Lesson {
+@Table(name = "student_unit")
+public class StudentUnit {
 
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
-    @Column(name = "name")
-    private String name;
-
-    @NotBlank
-    @Column(name = "code")
-    private String code;
+    @JsonIgnore
+    @Setter(AccessLevel.NONE)
+    @JoinColumn(name = "users_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Users users;
 
     @NotNull
-    @Column(name = "unit_number")
-    private Integer unitNumber;
+    @Column(name = "users_id")
+    private Long usersId;
 
     @JsonIgnore
     @Setter(AccessLevel.NONE)
-    @JoinColumn(name = "expertise_id", insertable = false, updatable = false)
+    @JoinColumn(name = "unit_id", insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Expertise expertise;
+    private Unit unit;
 
     @NotNull
-    @Column(name = "expertise_id")
-    private Long expertiseId;
+    @Column(name = "unit_id")
+    private Long unitId;
 }

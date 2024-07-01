@@ -1,11 +1,14 @@
 package com.google.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
@@ -13,8 +16,6 @@ import javax.validation.constraints.NotBlank;
 @ToString
 @Table(name = "professor")
 public class Professor {
-
-    //todo : must be check with nrgs
 
     @Id
     @GeneratedValue
@@ -37,7 +38,13 @@ public class Professor {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @NotBlank
-    @Column(name = "expertise")
-    private String expertise;
+    @JsonIgnore
+    @Setter(AccessLevel.NONE)
+    @JoinColumn(name = "expertise_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Expertise expertise;
+
+    @NotNull
+    @Column(name = "expertise_id")
+    private Long expertiseId;
 }
