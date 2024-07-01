@@ -14,6 +14,6 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     Optional<Users> findUsersByUsername(String userName);
 
-    @Query(value = QueryConstant.USER_LIST_VALUE, nativeQuery = true)
+    @Query(value = QueryConstant.USER_LIST, nativeQuery = true)
     List<?> getList(String username, Integer limit, Integer offset);
 }

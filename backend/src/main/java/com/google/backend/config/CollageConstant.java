@@ -8,6 +8,7 @@ public class CollageConstant {
     public static final String CREATE_CONTEXT = "/create";
     public static final String DELETE_CONTEXT = "/delete/{id}";
     public static final String LIST_CONTEXT = "/list";
+    public static final String EXPERTISE_CONTEXT = "/api/expertise";
     //END_API_ADDRESS
 
     //MESSAGE
