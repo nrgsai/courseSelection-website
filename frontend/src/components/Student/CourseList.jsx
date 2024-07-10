@@ -6,7 +6,7 @@ const CourseList = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetchCourses().then(r => r);
+        fetchCourses();
     }, []);
 
     const fetchCourses = async () => {

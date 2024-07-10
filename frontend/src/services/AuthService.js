@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth/';
+const API_URL = 'http://localhost:8089';
 
 const register = (username, password) => {
     return axios.post(API_URL + 'signup', {
@@ -11,7 +11,7 @@ const register = (username, password) => {
 
 const login = (username, password) => {
     return axios
-        .post(API_URL + 'signin', {
+        .post(API_URL + '/token', {
             username,
             password,
         })
@@ -26,11 +26,14 @@ const login = (username, password) => {
 const logout = () => {
     localStorage.removeItem('user');
 };
-
+const getCurrentUser = () => {
+    return JSON.parse(localStorage.getItem("user"))
+}
 const AuthService = {
     register,
     login,
     logout,
+    getCurrentUser
 };
 
 export default AuthService;

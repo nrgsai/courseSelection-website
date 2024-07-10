@@ -8,7 +8,7 @@ const ManageCourses = () => {
     const [instructor, setInstructor] = useState('');
 
     useEffect(() => {
-        fetchCourses().then(r => r);
+        fetchCourses();
     }, []);
 
     const fetchCourses = async () => {
@@ -20,7 +20,7 @@ const ManageCourses = () => {
         e.preventDefault();
         try {
             await CourseService.addCourse({name: courseName, instructor});
-            await fetchCourses();
+            fetchCourses();
         } catch (error) {
             console.error('Add course error', error);
         }

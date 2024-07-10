@@ -1,10 +1,10 @@
-import {useState} from 'react';
-import AuthService from '../../services/AuthService';
-import '../../styles/Auth.css';
+import {useState} from "react";
+import AuthService from "../../services/AuthService";
+import "../../styles/Auth.css";
 
-const Register = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+function Register() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -12,7 +12,7 @@ const Register = () => {
             await AuthService.register(username, password);
             // Redirect to login
         } catch (error) {
-            console.error('Register error', error);
+            console.error("Register error", error);
         }
     };
 
@@ -35,6 +35,6 @@ const Register = () => {
             </form>
         </div>
     );
-};
+}
 
 export default Register;

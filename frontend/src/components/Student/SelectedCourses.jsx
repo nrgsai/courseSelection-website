@@ -6,7 +6,7 @@ const SelectedCourses = () => {
     const [selectedCourses, setSelectedCourses] = useState([]);
 
     useEffect(() => {
-        fetchSelectedCourses().then(r => r);
+        fetchSelectedCourses();
     }, []);
 
     const fetchSelectedCourses = async () => {

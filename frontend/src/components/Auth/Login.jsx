@@ -1,10 +1,10 @@
-import {useState} from 'react';
-import AuthService from '../../services/AuthService';
-import '../../styles/Auth.css';
+import {useState} from "react";
+import AuthService from "../../services/AuthService";
+import "../../styles/Auth.css";
 
-const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+function Login() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -12,7 +12,7 @@ const Login = () => {
             await AuthService.login(username, password);
             // Redirect based on role
         } catch (error) {
-            console.error('Login error', error);
+            console.error("Login error", error);
         }
     };
 
@@ -35,6 +35,6 @@ const Login = () => {
             </form>
         </div>
     );
-};
+}
 
 export default Login;
