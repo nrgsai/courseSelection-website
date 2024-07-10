@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "course-selection",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.5.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

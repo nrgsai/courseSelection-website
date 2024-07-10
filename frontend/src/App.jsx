@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route , Routes} from 'react-router-dom';
+
 import './App.css';
 import AuthService from './services/AuthService';
 import Login from './components/Auth/Login';
@@ -11,7 +12,7 @@ const App = () => {
     return (
         <Router>
             <div className="App">
-                <Switch>
+                <Routes>
                     <Route exact path="/" component={Login}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
@@ -21,7 +22,7 @@ const App = () => {
                     {currentUser && currentUser.role === 'student' && (
                         <Route path="/student" component={StudentDashboard}/>
                     )}
-                </Switch>
+                </Routes>
             </div>
         </Router>
     );
