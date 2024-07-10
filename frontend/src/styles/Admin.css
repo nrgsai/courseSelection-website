@@ -1,0 +1,48 @@
+/* Admin.css */
+
+.admin-dashboard {
+    padding: 20px;
+  }
+  
+  .admin-dashboard h1 {
+    margin-bottom: 20px;
+  }
+  
+  .admin-dashboard form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .admin-dashboard input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .admin-dashboard button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .admin-dashboard button:hover {
+    background-color: #0056b3;
+  }
+  
+  .admin-dashboard ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .admin-dashboard li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
