@@ -5,7 +5,7 @@ import '../../styles/Student.css';
 
 const StudentDashboard = () => {
     return (
-        <div>
+        <div className="student-dashboard">
             <h1>Student Dashboard</h1>
             <CourseSearch/>
             <CourseList/>

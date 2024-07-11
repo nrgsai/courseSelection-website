@@ -13,7 +13,7 @@ const CourseSearch = () => {
     };
 
     return (
-        <div>
+        <div className="student-dashboard">
             <h2>Search Courses</h2>
             <form onSubmit={handleSearch}>
                 <input

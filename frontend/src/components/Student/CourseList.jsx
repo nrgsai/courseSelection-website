@@ -15,7 +15,7 @@ const CourseList = () => {
     };
 
     return (
-        <div>
+        <div className="student-dashboard">
             <h2>Available Courses</h2>
             <ul>
                 {courses.map((course) => (

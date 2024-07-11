@@ -10,15 +10,15 @@ function Login() {
         e.preventDefault();
         try {
             await AuthService.login(username, password);
-            // Redirect based on role
         } catch (error) {
             console.error("Login error", error);
         }
     };
 
     return (
-        <div className="login-container">
+        <div className="auth-container">
             <form onSubmit={handleSubmit}>
+                <h2>welcome to course selection system</h2>
                 <input
                     type="text"
                     value={username}

@@ -27,9 +27,9 @@ const ManageCourses = () => {
     };
 
     return (
-        <div>
+        <div className="admin-dashboard">
             <h2>Manage Courses</h2>
-            <form onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={courseName}
