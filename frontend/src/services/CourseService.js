@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/courses/';
+const API_URL = 'http://localhost:8089/api/courses/';
 
 const getCourses = () => {
     return axios.get(API_URL).then((response) => response.data);
@@ -11,7 +11,8 @@ const addCourse = (course) => {
 };
 
 const getSelectedCourses = () => {
-    // Implement fetching selected courses for the logged-in user
+    return axios.get(API_URL + 'selectedCourses') 
+        .then((response) => response.data);
 };
 
 const searchCourses = (query) => {
