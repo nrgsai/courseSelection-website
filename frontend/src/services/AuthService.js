@@ -1,23 +1,23 @@
-import axios from 'axios';
+import axiosInstance from './api';
 
 const API_URL = 'http://localhost:8089';
 
 const register = (username, password) => {
-    return axios.post(API_URL + 'signup', {
+    return axiosInstance.post(API_URL + 'signup', {
         username,
         password,
     });
 };
 
 const login = (username, password) => {
-    return axios
+    return axiosInstance
         .post(API_URL + '/signin', {
             username,
             password,
         })
         .then((response) => {
             if (response.data.accessToken) {
-                localStorage.setItem('user', JSON.stringify(response.data));
+                localStorage.setItem('accessToken', response.data.accessToken);
             }
             return response.data;
         });
