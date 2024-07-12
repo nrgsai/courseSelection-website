@@ -36,7 +36,7 @@ public class CourseService {
     }
 
     @Transactional(readOnly = true)
-    public List<?> getList(CourseModel model) {
-        return repository.getList(model.getName(), model.getInstructor());
+    public List<?> getList() {
+        return repository.findAllBy();
     }
 }
