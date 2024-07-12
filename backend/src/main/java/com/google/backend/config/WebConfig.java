@@ -22,7 +22,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-        registry.addResourceHandler("**/*.css", "**/*.js", "**/*.map", "*.html")
+        registry.addResourceHandler("**/*.css", "**/*.js", "**/*.map", "*.html", "**/*.jsx", "*.jsx", "**/*.ts", "*.ts")
                 .addResourceLocations("classpath:META-INF/resources/").setCachePeriod(0);
     }
 

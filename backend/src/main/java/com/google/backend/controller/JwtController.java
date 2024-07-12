@@ -2,6 +2,7 @@ package com.google.backend.controller;
 
 import com.google.backend.config.CollageConstant;
 import com.google.backend.config.JwtConfig;
+import com.google.backend.model.UsersModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -30,16 +31,14 @@ public class JwtController {
     }
 
     @PostMapping(value = CollageConstant.TOKEN, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getToken(@RequestParam(name = "username") String username,
-                                      @RequestParam(name = "password") String password,
-                                      HttpServletResponse response) {
+    public ResponseEntity<?> getToken(@RequestBody UsersModel model, HttpServletResponse response) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(model.getUsername(), model.getPassword()));
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        response.addHeader(CollageConstant.AUTHORIZATION, jwtConfig.generateToken(username));
+        response.addHeader(CollageConstant.AUTHORIZATION, jwtConfig.generateToken(model.getUsername()));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
