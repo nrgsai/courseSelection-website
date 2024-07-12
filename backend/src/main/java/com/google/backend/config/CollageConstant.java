@@ -14,6 +14,7 @@ public class CollageConstant {
     public static final String PROFESSOR_CONTEXT = "/api/professor";
     public static final String LESSON_CONTEXT = "/api/lesson";
     public static final String UNIT_CONTEXT = "/api/unit";
+    public static final String STUDENT_UNIT_CONTEXT = "/api/studentUnit";
     //END_API_ADDRESS
 
     //MESSAGE
