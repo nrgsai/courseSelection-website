@@ -31,4 +31,9 @@ public class UsersController {
                                   @RequestParam("offset") Integer offset) {
         return ResponseEntity.ok(service.getListUser(model, limit, offset));
     }
+
+    @GetMapping(value = CollageConstant.ROLE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getRole() {
+        return ResponseEntity.ok(service.getRole());
+    }
 }

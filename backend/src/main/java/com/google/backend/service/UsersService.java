@@ -122,4 +122,14 @@ public class UsersService implements UserDetailsService {
                 offset != null ? offset - 1 : 0
         );
     }
+
+    @Transactional(readOnly = true)
+    public String getRole() {
+        String token = SecurityUtil.getTokenFromCurrentRequest();
+        if (token != null && !token.isEmpty()) {
+            Long currentId = SecurityUtil.getCurrentId(token);
+            return rolesService.getUserRoleNameByUserIdWithoutRole(currentId);
+        }
+        throw new ServiceException(CollageConstant.INVALID_TOKEN);
+    }
 }
