@@ -27,6 +27,10 @@ function Login() {
         }
     };
 
+    const handleRegisterClick = () => {
+        navigate("/register");
+    };
+
     return (
         <div className="auth-container">
             <form onSubmit={handleSubmit}>
@@ -43,7 +47,8 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
-                <button type="submit">Login</button>
+                <button type="submit">Login</button><br></br>
+                <button type="button" onClick={handleRegisterClick}>Register</button>
             </form>
         </div>
     );
