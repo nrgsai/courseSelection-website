@@ -1,8 +1,6 @@
 package com.google.backend.service;
 
 import com.google.backend.entity.Course;
-import com.google.backend.enums.RoleEnum;
-import com.google.backend.exception.AccessException;
 import com.google.backend.mapper.CourseMapper;
 import com.google.backend.model.CourseModel;
 import com.google.backend.repository.CourseRepository;
@@ -17,11 +15,9 @@ import java.util.List;
 public class CourseService {
 
     private final CourseRepository repository;
-    private final AccessException accessException;
 
     @Transactional(rollbackFor = Exception.class)
     public CourseModel create(CourseModel model) {
-        accessException.validate(RoleEnum.ROLE_ADMIN.toString());
         Course entity = CourseMapper.get().modelToEntity(model);
         repository.save(entity);
         return CourseMapper.get().entityToModel(entity);
@@ -29,21 +25,18 @@ public class CourseService {
 
     @Transactional(rollbackFor = Exception.class)
     public void delete(Long id) {
-        accessException.validate(RoleEnum.ROLE_ADMIN.toString());
         repository.deleteById(id);
     }
 
     @Transactional(readOnly = true)
     public CourseModel get(Long id) {
-        accessException.validate(RoleEnum.ROLE_STUDENT.toString());
         return CourseMapper
                 .get()
                 .entityToModel(repository.findById(id).orElse(new Course()));
     }
 
     @Transactional(readOnly = true)
-    public List<?> getList() {
-        accessException.validate(RoleEnum.ROLE_STUDENT.toString());
-        return repository.findAllBy();
+    public List<?> getList(CourseModel model) {
+        return repository.getList(model.getName(), model.getInstructor());
     }
 }

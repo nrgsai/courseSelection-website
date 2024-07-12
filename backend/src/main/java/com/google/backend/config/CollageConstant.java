@@ -3,7 +3,7 @@ package com.google.backend.config;
 public class CollageConstant {
 
     //API_ADDRESS
-    public static final String USER_CONTEXT = "/api/users";
+    public static final String USER_CONTEXT = "/users";
     public static final String JWT_CONTEXT = "/jwt";
     public static final String CREATE_CONTEXT = "/create";
     public static final String UPDATE_CONTEXT = "/update";
@@ -16,7 +16,7 @@ public class CollageConstant {
     public static final String LESSON_CONTEXT = "/api/lesson";
     public static final String UNIT_CONTEXT = "/api/unit";
     public static final String STUDENT_UNIT_CONTEXT = "/api/studentUnit";
-    public static final String COURSE_CONTEXT = "/api/course";
+    public static final String COURSE_CONTEXT = "/course";
     //END_API_ADDRESS
 
     //MESSAGE

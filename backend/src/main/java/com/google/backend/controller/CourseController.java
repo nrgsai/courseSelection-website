@@ -32,7 +32,7 @@ public class CourseController {
     }
 
     @PostMapping(value = CollageConstant.LIST_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> list() {
-        return ResponseEntity.ok(service.getList());
+    public ResponseEntity<?> list(@RequestBody CourseModel model) {
+        return ResponseEntity.ok(service.getList(model));
     }
 }

@@ -62,4 +62,13 @@ public class QueryConstant {
             "         left join lesson l on u.lesson_id = l.id " +
             "         left join professor p on u.professor_id = p.id " +
             "limit :limit offset :offset;";
+
+    public static final String COURSE_LIST = "select * " +
+            "from course c " +
+            "where case " +
+            "          when :name = '' then true " +
+            "          else :name = c.name end " +
+            "  and case " +
+            "          when :instructor = '' then true " +
+            "          else :instructor = c.instructor end";
 }
