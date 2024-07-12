@@ -60,7 +60,7 @@ public class UnitService {
 
     @Transactional(readOnly = true)
     public UnitModel get(Long id) {
-        accessException.validate(RoleEnum.ROLE_ADMIN.toString());
+        accessException.validate(RoleEnum.ROLE_STUDENT.toString());
         return UnitMapper
                 .get()
                 .entityToModel(repository.findById(id).orElse(new Unit()));
@@ -68,7 +68,7 @@ public class UnitService {
 
     @Transactional(readOnly = true)
     public List<?> getList(UnitModel model, Integer limit, Integer offset) {
-        accessException.validate(RoleEnum.ROLE_ADMIN.toString());
+        accessException.validate(RoleEnum.ROLE_STUDENT.toString());
         System.out.println(model);
         return repository.getList(
                 limit != null ? limit : 5,

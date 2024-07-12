@@ -48,7 +48,7 @@ public class LessonService {
 
     @Transactional(readOnly = true)
     public LessonModel get(Long id) {
-        accessException.validate(RoleEnum.ROLE_STUDENT.toString());
+        accessException.validate(RoleEnum.ROLE_ADMIN.toString());
         return LessonMapper
                 .get()
                 .entityToModel(repository.findById(id).orElse(new Lesson()));
@@ -56,7 +56,7 @@ public class LessonService {
 
     @Transactional(readOnly = true)
     public List<?> getList(LessonModel model, Integer limit, Integer offset) {
-        accessException.validate(RoleEnum.ROLE_STUDENT.toString());
+        accessException.validate(RoleEnum.ROLE_ADMIN.toString());
         System.out.println(model);
         return repository.getList(
                 limit != null ? limit : 5,
