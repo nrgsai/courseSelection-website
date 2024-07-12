@@ -33,4 +33,19 @@ public class QueryConstant {
             "from lesson l " +
             "         left join expertise e on l.expertise_id = e.id " +
             "limit :limit offset :offset;";
+
+    public static final String UNIT_LIST = "select u.id, " +
+            "       u.lesson_id, " +
+            "       u.professor_id, " +
+            "       u.day, " +
+            "       u.time, " +
+            "       l.name                             as course_name, " +
+            "       l.code                             as course_code, " +
+            "       l.unit_number, " +
+            "       p.first_name || ' ' || p.last_name as professor_name, " +
+            "       p.national_code                    as professor_code " +
+            "from unit u " +
+            "         left join lesson l on u.lesson_id = l.id " +
+            "         left join professor p on u.professor_id = p.id " +
+            "limit :limit offset :offset;";
 }

@@ -13,6 +13,7 @@ public class CollageConstant {
     public static final String EXPERTISE_CONTEXT = "/api/expertise";
     public static final String PROFESSOR_CONTEXT = "/api/professor";
     public static final String LESSON_CONTEXT = "/api/lesson";
+    public static final String UNIT_CONTEXT = "/api/unit";
     //END_API_ADDRESS
 
     //MESSAGE
