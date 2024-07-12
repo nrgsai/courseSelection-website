@@ -214,4 +214,35 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="1.1-11-mohammad" author="mohammad">
+        <createTable tableName="course">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_course_id"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="instructor" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1-12-data_entry" author="data_entry">
+        <insert tableName="users">
+            <column name="id" value="2"/>
+            <column name="username" value="student"/>
+            <column name="password" value="$2a$10$cUYkYA3EIgXACIdJWu549eKkVps09VgwUgFZIb4NAHaPp.TsaJAwW"/>
+            <column name="enabled" value="true"/>
+            <column name="account_non_expired" value="true"/>
+            <column name="account_non_locked" value="true"/>
+            <column name="credentials_non_expired" value="true"/>
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" value="2"/>
+            <column name="user_id" value="2"/>
+            <column name="role_id" value="2"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>
