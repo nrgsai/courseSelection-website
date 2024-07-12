@@ -13,7 +13,7 @@ function Login() {
         try {
             const user = await AuthService.login(username, password);
             if (user) {
-                console.log("Navigating to:", user.role === "admin" ? "/admin" : "/student");
+                console.log("Logged in user:", user);
                 if (user.role === "admin") {
                     navigate("/admin");
                 } else if (user.role === "student") {
