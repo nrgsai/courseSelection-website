@@ -30,9 +30,7 @@ const CourseSearch = () => {
             </form>
             <ul>
                 {results.map((course) => (
-                    <li key={course._id}>
-                        {course.name} - {course.instructor}
-                    </li>
+                    <li key={course.id}>{course.name} - {course.instructor}</li>
                 ))}
             </ul>
         </div>

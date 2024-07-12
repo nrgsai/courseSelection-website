@@ -43,6 +43,7 @@ const ManageCourses = () => {
                     placeholder="Instructor"
                 />
                 <button type="submit">Add Course</button>
+
             </form>
             <ul>
                 {courses.map((course) => (
