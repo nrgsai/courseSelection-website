@@ -1,21 +1,22 @@
 import axiosInstance from './api';
 
-const API_URL = 'http://localhost:8089/api'; // Ensure this matches your backend base URL
+const API_URL = 'http://localhost:8089'; // Assuming this is the base URL for your backend
 
 const getCourses = () => {
-    return axiosInstance.get(`${API_URL}/courses`).then((response) => response.data);
+    return axiosInstance.get(`${API_URL}/course/list`).then((response) => response.data);
 };
 
 const addCourse = (course) => {
-    return axiosInstance.post(`${API_URL}/courses`, course);
+    return axiosInstance.post(`${API_URL}/course/create`, course);
 };
 
 const getSelectedCourses = () => {
-    return axiosInstance.get(`${API_URL}/courses/selected`).then((response) => response.data);
+    return axiosInstance.get(`${API_URL}/course/selectedCourses`)
+        .then((response) => response.data);
 };
 
 const searchCourses = (query) => {
-    return axiosInstance.get(`${API_URL}/courses/search`, { params: { q: query } })
+    return axiosInstance.get(`${API_URL}/course/search`, { params: { q: query } })
         .then((response) => response.data);
 };
 
