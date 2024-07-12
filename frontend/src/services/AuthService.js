@@ -3,7 +3,7 @@ import axiosInstance from './api';
 const API_URL = 'http://localhost:8089';
 
 const register = (username, password) => {
-    return axiosInstance.post(API_URL + 'signup', {
+    return axiosInstance.post(API_URL + '/api/users/create', {
         username,
         password,
     });
@@ -11,7 +11,7 @@ const register = (username, password) => {
 
 const login = (username, password) => {
     return axiosInstance
-        .post(API_URL + '/signin', {
+        .post(API_URL + '/jwt/token', {
             username,
             password,
         })
