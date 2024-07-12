@@ -11,6 +11,8 @@ import AdminDashboard from "./components/Admin/AdminDashboard";
 
 const App = () => {
   const currentUser = AuthService.getCurrentUser();
+  console.log("Current User:", currentUser);
+
   return (
     <BrowserRouter>
       <Routes>
