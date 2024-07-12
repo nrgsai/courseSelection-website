@@ -37,8 +37,7 @@ public class CourseController {
     }
 
     @PostMapping(value = "/search")
-    public ResponseEntity<?> list(@RequestParam(required = false) String name,
-                                  @RequestParam(required = false) String instructor) {
-        return ResponseEntity.ok(service.search(name, instructor));
+    public ResponseEntity<?> list(@RequestBody CourseModel model) {
+        return ResponseEntity.ok(service.search(model.getName()));
     }
 }

@@ -41,8 +41,7 @@ public class CourseService {
     }
 
     @Transactional(readOnly = true)
-    public List<?> search(String name, String instructor) {
-        return repository.getList(name != null ? name : "",
-                instructor != null ? instructor : "");
+    public List<?> search(String name) {
+        return repository.getList(name != null ? name : "");
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
     @Query(value = QueryConstant.COURSE_LIST, nativeQuery = true)
-    List<?> getList(String name, String instructor);
+    List<?> getList(String name);
 
     List<?> findAllBy();
 }

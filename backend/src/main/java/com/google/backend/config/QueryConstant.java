@@ -67,8 +67,5 @@ public class QueryConstant {
             "from course c " +
             "where case " +
             "          when :name = '' then true " +
-            "          else :name = c.name end " +
-            "  and case " +
-            "          when :instructor = '' then true " +
-            "          else :instructor = c.instructor end";
+            "          else :name = c.name or :name = c.instructor end";
 }
