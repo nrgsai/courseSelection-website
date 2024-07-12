@@ -1,15 +1,24 @@
-import {useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 import "../../styles/Auth.css";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await AuthService.login(username, password);
+            const user = await AuthService.login(username, password);
+            if (user) {
+                if (user.role === "admin") {
+                    navigate("/admin");
+                } else if (user.role === "student") {
+                    navigate("/student");
+                }
+            }
         } catch (error) {
             console.error("Login error", error);
         }
@@ -18,7 +27,7 @@ function Login() {
     return (
         <div className="auth-container">
             <form onSubmit={handleSubmit}>
-                <h2>welcome to course selection system</h2>
+                <h2>Welcome to Course Selection System</h2>
                 <input
                     type="text"
                     value={username}
