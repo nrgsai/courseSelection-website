@@ -20,13 +20,13 @@ public class CourseController {
         return ResponseEntity.ok(service.create(model));
     }
 
-    @DeleteMapping(value = CollageConstant.DELETE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = CollageConstant.DELETE_CONTEXT + "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.ok(CollageConstant.SUCCESS);
     }
 
-    @GetMapping(value = CollageConstant.GET_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CollageConstant.GET_CONTEXT + "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> get(@PathVariable Long id) {
         return ResponseEntity.ok(service.get(id));
     }
