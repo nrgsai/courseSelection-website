@@ -35,4 +35,10 @@ public class CourseController {
     public ResponseEntity<?> list() {
         return ResponseEntity.ok(service.getList());
     }
+
+    @PostMapping(value = "/search")
+    public ResponseEntity<?> list(@RequestParam(required = false) String name,
+                                  @RequestParam(required = false) String instructor) {
+        return ResponseEntity.ok(service.search(name, instructor));
+    }
 }

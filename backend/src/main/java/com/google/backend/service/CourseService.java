@@ -39,4 +39,10 @@ public class CourseService {
     public List<?> getList() {
         return repository.findAllBy();
     }
+
+    @Transactional(readOnly = true)
+    public List<?> search(String name, String instructor) {
+        return repository.getList(name != null ? name : "",
+                instructor != null ? instructor : "");
+    }
 }
