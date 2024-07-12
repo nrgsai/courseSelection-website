@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import CourseService from '../../services/CourseService';
 import '../../styles/Student.css';
 
@@ -8,8 +8,12 @@ const CourseSearch = () => {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        const data = await CourseService.searchCourses(query);
-        setResults(data);
+        try {
+            const data = await CourseService.searchCourses(query);
+            setResults(data);
+        } catch (error) {
+            console.error('Error searching courses:', error);
+        }
     };
 
     return (
@@ -26,7 +30,9 @@ const CourseSearch = () => {
             </form>
             <ul>
                 {results.map((course) => (
-                    <li key={course._id}>{course.name} - {course.instructor}</li>
+                    <li key={course._id}>
+                        {course.name} - {course.instructor}
+                    </li>
                 ))}
             </ul>
         </div>

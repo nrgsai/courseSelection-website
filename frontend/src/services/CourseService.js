@@ -16,7 +16,7 @@ const getSelectedCourses = () => {
 };
 
 const searchCourses = (query) => {
-    return axiosInstance.get(`${API_URL}/course/search`, {params: {q: query}})
+    return axiosInstance.get(`${API_URL}/course/search`, { params: { q: query } })
         .then((response) => response.data);
 };
 
