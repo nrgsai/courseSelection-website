@@ -17,7 +17,7 @@ const login = (username, password) => {
         })
         .then((response) => {
             if (response.data.accessToken) {
-                localStorage.setItem('user', JSON.stringify({
+                localStorage.setItem('users', JSON.stringify({
                     username: response.data.username,
                     role: response.data.role,
                     accessToken: response.data.accessToken,
@@ -28,11 +28,11 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('users');
 };
 
 const getCurrentUser = () => {
-    const userStr = localStorage.getItem('user');
+    const userStr = localStorage.getItem('users');
     if (userStr) {
         return JSON.parse(userStr);
     }
