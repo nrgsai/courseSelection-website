@@ -14,10 +14,12 @@ function Login() {
             const user = await AuthService.login(username, password);
             if (user) {
                 console.log("Logged in user:", user);
-                if (user.role === "admin") {
+                if (user.role === "ADMIN") {
                     navigate("/admin");
-                } else if (user.role === "student") {
+                } else if (user.role === "STUDENT") {
                     navigate("/student");
+                } else {
+                    console.error("Unknown user role:", user.role);
                 }
             }
         } catch (error) {
