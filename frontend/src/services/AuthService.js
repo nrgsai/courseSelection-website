@@ -16,12 +16,15 @@ const login = (username, password) => {
             password,
         })
         .then((response) => {
+            console.log("Login response:", response.data);
             if (response.data.accessToken) {
-                localStorage.setItem('users', JSON.stringify({
+                const user = {
                     username: response.data.username,
                     role: response.data.role,
-                    accessToken: response.data.accessToken,
-                }));
+                    accessToken: response.data.accessToken
+                };
+                localStorage.setItem('user', JSON.stringify(user));
+                console.log("User stored in localStorage:", user);
             }
             return response.data;
         });
