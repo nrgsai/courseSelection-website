@@ -16,26 +16,23 @@ const login = (username, password) => {
             password,
         })
         .then((response) => {
-            console.log("Login response:", response.data);
             if (response.data.accessToken) {
-                const user = {
+                localStorage.setItem('user', JSON.stringify({
+                    accessToken: response.data.accessToken,
                     username: response.data.username,
                     role: response.data.role,
-                    accessToken: response.data.accessToken
-                };
-                localStorage.setItem('user', JSON.stringify(user));
-                console.log("User stored in localStorage:", user);
+                }));
             }
             return response.data;
         });
 };
 
 const logout = () => {
-    localStorage.removeItem('users');
+    localStorage.removeItem('user');
 };
 
 const getCurrentUser = () => {
-    const userStr = localStorage.getItem('users');
+    const userStr = localStorage.getItem('user');
     if (userStr) {
         return JSON.parse(userStr);
     }

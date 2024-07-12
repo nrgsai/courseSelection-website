@@ -37,8 +37,16 @@ public class JwtController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-
-        response.addHeader(CollageConstant.AUTHORIZATION, jwtConfig.generateToken(model.getUsername()));
-        return new ResponseEntity<>(HttpStatus.OK);
+    
+        String token = jwtConfig.generateToken(model.getUsername());
+        // Assuming UsersModel has a role attribute, otherwise, adjust accordingly
+        String role = model.getRole();
+    
+        // Return the token and user details in the response body
+        return ResponseEntity.ok().body(new HashMap<String, Object>() {{
+            put("accessToken", token);
+            put("username", model.getUsername());
+            put("role", role);
+        }});
     }
-}
+    
