@@ -19,10 +19,10 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {currentUser && currentUser.role === "admin" && (
+        {currentUser && currentUser.role === "ADMIN" && (
           <Route path="/admin" element={<AdminDashboard />} />
         )}
-        {currentUser && currentUser.role === "student" && (
+        {currentUser && currentUser.role === "STUDENT" && (
           <Route path="/student" element={<StudentDashboard />} />
         )}
       </Routes>
