@@ -19,4 +19,10 @@ public class QueryConstant {
             "from roles r " +
             "         left join users_roles ur on ur.role_id = r.id " +
             "where ur.user_id = :userId";
+
+    public static final String PROFESSOR_LIST = "select p.id, p.first_name, p.last_name, " +
+            " p.national_code, p.phone_number, p.expertise_id, e.title as expertise " +
+            "from professor p " +
+            "         left join expertise e on p.expertise_id = e.id " +
+            "limit :limit offset :offset";
 }

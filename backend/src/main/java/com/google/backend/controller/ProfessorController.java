@@ -1,23 +1,28 @@
 package com.google.backend.controller;
 
 import com.google.backend.config.CollageConstant;
-import com.google.backend.model.ExpertiseModel;
-import com.google.backend.service.ExpertiseService;
+import com.google.backend.model.ProfessorModel;
+import com.google.backend.service.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = CollageConstant.EXPERTISE_CONTEXT)
+@RequestMapping(value = CollageConstant.PROFESSOR_CONTEXT)
 @RequiredArgsConstructor
-public class ExpertiseController {
+public class ProfessorController {
 
-    private final ExpertiseService service;
+    private final ProfessorService service;
 
     @PostMapping(value = CollageConstant.CREATE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> create(@RequestBody ExpertiseModel model) {
+    public ResponseEntity<?> create(@RequestBody ProfessorModel model) {
         return ResponseEntity.ok(service.create(model));
+    }
+
+    @PostMapping(value = CollageConstant.UPDATE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> update(@RequestBody ProfessorModel model) {
+        return ResponseEntity.ok(service.update(model));
     }
 
     @DeleteMapping(value = CollageConstant.DELETE_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -32,7 +37,7 @@ public class ExpertiseController {
     }
 
     @PostMapping(value = CollageConstant.LIST_CONTEXT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> list(@RequestBody ExpertiseModel model,
+    public ResponseEntity<?> list(@RequestBody ProfessorModel model,
                                   @RequestParam("limit") Integer limit,
                                   @RequestParam("offset") Integer offset) {
         return ResponseEntity.ok(service.getList(model, limit, offset));
