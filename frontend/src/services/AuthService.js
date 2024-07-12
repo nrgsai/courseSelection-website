@@ -1,23 +1,27 @@
-import axiosInstance from './api';
+import axios from 'axios';
 
 const API_URL = 'http://localhost:8089';
 
 const register = (username, password) => {
-    return axiosInstance.post(API_URL + '/api/users/create', {
+    return axios.post(API_URL + '/api/users/create', {
         username,
         password,
     });
 };
 
 const login = (username, password) => {
-    return axiosInstance
+    return axios
         .post(API_URL + '/jwt/token', {
             username,
             password,
         })
         .then((response) => {
             if (response.data.accessToken) {
-                localStorage.setItem('user', JSON.stringify(response.data));
+                localStorage.setItem('user', JSON.stringify({
+                    username: response.data.username,
+                    role: response.data.role,
+                    accessToken: response.data.accessToken,
+                }));
             }
             return response.data;
         });
@@ -26,18 +30,20 @@ const login = (username, password) => {
 const logout = () => {
     localStorage.removeItem('user');
 };
-const getCurrentUser = () => {
-    const user = localStorage.getItem('user');
-    if (user){
-        return JSON.parse(user);
 
+const getCurrentUser = () => {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+        return JSON.parse(userStr);
     }
-}
+    return null;
+};
+
 const AuthService = {
     register,
     login,
     logout,
-    getCurrentUser
+    getCurrentUser,
 };
 
 export default AuthService;
