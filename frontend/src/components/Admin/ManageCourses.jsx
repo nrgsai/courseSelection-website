@@ -43,6 +43,8 @@ const ManageCourses = () => {
                     placeholder="Instructor"
                 />
                 <button type="submit">Add Course</button>
+                32
+                
 
             </form>
             <ul>
