@@ -3,7 +3,7 @@ import axiosInstance from './api';
 const API_URL = 'http://localhost:8089'; // Assuming this is the base URL for your backend
 
 const getCourses = () => {
-    return axiosInstance.get(`${API_URL}/course`).then(response => response.data);
+    return axiosInstance.get(`${API_URL}/course/list`).then(response => response.data);
 };
 
 const addCourse = (course) => {
@@ -15,7 +15,7 @@ const getSelectedCourses = () => {
 };
 
 const searchCourses = (query) => {
-    return axiosInstance.get(`${API_URL}/course/search`, { params: { q: query } })
+    return axiosInstance.post(`${API_URL}/course/search`, {name: query})
         .then(response => response.data);
 };
 
