@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://738d-86-55-248-175.ngrok-free.app';
+const API_URL = 'http://localhost:8089';
 
 const register = (username, password) => {
     return axios.post(API_URL + '/users/create', {
